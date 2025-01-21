@@ -12,6 +12,36 @@
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
+         <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        main {
+            flex: 1;
+        }
+        footer {
+            background-color: #f8f9fa; /* Gris clair */
+            text-align: center;
+            padding: 1rem 0;
+            border-top: 1px solid #ddd;
+        }
+        .mycarousel{
+	height: 30vh;
+	max-height: 30vh;
+	object-fit: cover;
+}
+
+.article{
+	background-color: rgba(240, 240, 240,0.5);
+}
+
+.article .content img{
+	width: 30%;
+}
+    </style>
     </head>
     <body>
      <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,6 +71,11 @@
             </div>
         </div>
     </nav>
+    <main class="container mt-4">
         {% block body %}{% endblock %}
+    </main>
     </body>
+    <footer class>
+     <p>&copy; {{ "now"|date("Y") }} Yggdrasil - Provided by Tyrfing</p>
+    </footer>
 </html>
