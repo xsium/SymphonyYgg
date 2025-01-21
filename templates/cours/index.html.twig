@@ -9,12 +9,31 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>S:/Simon/Formation CDA/TP/PHP/symfon_project/tutoriel/src/Controller/CoursController.php</code></li>
-        <li>Your template at <code>S:/Simon/Formation CDA/TP/PHP/symfon_project/tutoriel/templates/cours/index.html.twig</code></li>
-    </ul>
+    <div class="container mt-4">
+    <h1 class="text-center mb-4">Nos Cours</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for cour in cours %}
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{{ asset('images/placeholder.jpg') }}" class="card-img-top" alt="{{ cour.nom }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ cour.nom }}</h5>
+                        <p class="card-text">
+                            {{ cour.description|length > 100 ? cour.description[:100] ~ '...' : cour.description }}
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">Durée : {{ cour.duree }} heures</small>
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="container">
+                <p class="text-center">Aucun cours disponible pour le moment.</p>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
 </div>
 {% endblock %}

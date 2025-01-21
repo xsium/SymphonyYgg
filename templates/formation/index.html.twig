@@ -9,12 +9,28 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>S:/Simon/Formation CDA/TP/PHP/symfon_project/tutoriel/src/Controller/FormationController.php</code></li>
-        <li>Your template at <code>S:/Simon/Formation CDA/TP/PHP/symfon_project/tutoriel/templates/formation/index.html.twig</code></li>
-    </ul>
+    <div class="container mt-4">
+    <h1 class="text-center mb-4">Nos Formations</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for formation in formations %}
+            <div class="col">
+                <div class="card h-100">
+                    <img src="{{ asset('images/placeholder.jpg') }}" class="card-img-top" alt="{{ formation.nom }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ formation.nom }}</h5>
+                        <p class="card-text">
+                            {{ formation.description|length > 100 ? formation.description[:100] ~ '...' : formation.description }}
+                        </p>
+                        <a href="{{ path('app_formation_show', { id: formation.id }) }}" class="btn btn-primary">Voir plus</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="container">
+                <p class="text-center">Aucune Formation disponible pour le moment.</p>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
 </div>
 {% endblock %}
