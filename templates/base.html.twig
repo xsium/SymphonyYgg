@@ -67,6 +67,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_register') }}">S'enregistrer</a>
                     </li>
+                    
+                     {% if app.request.attributes.get('_route') == 'app_cours' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_cours_admin_index') }}">Admin Cours</a>
+                    </li>
+                    {% elseif app.request.attributes.get('_route') == 'app_formation' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_formation_admin_index') }}">Admin Formations</a>
+                    </li>
+                    {% elseif app.request.attributes.get('_route') == 'app_accueil' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_user_admin_index') }}">Admin User</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
